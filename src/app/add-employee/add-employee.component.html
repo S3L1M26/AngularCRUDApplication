@@ -1,0 +1,66 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>New Employee</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+              &nbsp;Back</a>
+          </div>
+        </div>
+      </div>
+      <form #employeeForm="ngForm">
+        <div class="table-content">
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label for="nombre" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="nombre" required maxlength="255"
+                [(ngModel)]="addEmployeeForm.nombre" name="nombre" #nombre="ngModel">
+              <div *ngIf="nombre.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!nombre.errors?.['required']">
+                  Nombre is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label for="apellido" class="p-t-b-10">apellido<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="apellido" required maxlength="255"
+                [(ngModel)]="addEmployeeForm.apellido" name="apellido" #apellido="ngModel">
+              <div *ngIf="apellido.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!apellido.errors?.['required']">
+                  apellido is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-10 row">
+            <div class="col-sm-3">
+              <label class="p-t-b-10">Fecha de Nacimiento<span class="requiredStar">*</span></label>
+            </div>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="fecha_nacimiento" required
+                [(ngModel)]="addEmployeeForm.fecha_nacimiento" name="fecha_nacimiento" #fechaNacimiento="ngModel">
+              <div *ngIf="fechaNacimiento.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!fechaNacimiento.errors?.['required']">
+                  Fecha de Nacimiento es obligatoria
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-footer">
+          <button class="btn btn-success" (click)="AddEmployee(employeeForm.form.valid)">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
